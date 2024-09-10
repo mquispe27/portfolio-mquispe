@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "Matthew Quispe"
-  text: "Matt: A Portfolio"
+  text: "A Portfolio"
   tagline: "6.104 Fall 2024"
   actions:
     - theme: brand
@@ -21,5 +21,6 @@ features:
   - title: Assignments
     details: All of your assignments will be posted on your portfolio.
   - title: About Me
-    details: You'll implement a small bio about yourself on here!
+    details: A little bit about yours truly.
+    link: /about
 ---
