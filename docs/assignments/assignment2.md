@@ -18,7 +18,7 @@ StudyCalm – The transition from high school to college is not easy, as you’r
 
 # Task 2 - Comparables
 
-![Alt text](./IMG_317.png)
+![Alt text](./IMG_3178.png)
 
 This is a Discord poll created by a user which calls a Discord bot, here used for meetup purposes. I am iterating on that for study groups and meetups for affinity groups in my wellbeing app. The twist is that to not have to think of times, the app could automatically suggest a few times.
 
