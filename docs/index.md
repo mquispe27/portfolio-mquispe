@@ -20,6 +20,7 @@ features:
     link: /blogs
   - title: Assignments
     details: All of your assignments will be posted on your portfolio.
+    link: /assignments
   - title: About Me
     details: A little bit about yours truly.
     link: /about
