@@ -18,26 +18,26 @@ StudyCalm – The transition from high school to college is not easy, as you’r
 
 # Task 2 - Comparables
 
-![Alt text](./IMG_3178.PNG)
+![Alt text](./IMG_3178.png)
 
 This is a Discord poll created by a user which calls a Discord bot, here used for meetup purposes. I am iterating on that for study groups and meetups for affinity groups in my wellbeing app. The twist is that to not have to think of times, the app could automatically suggest a few times.
 
-![Alt text](./IMG_3179.PNG)
+![Alt text](./IMG_3179.png)
 This is from the Sleep Cycle app I occasionally used in the past. For my wellbeing social media app I can implement a stripped down version of this that just tracks length of sleep, not necessarily start and stop, and asking you if you hit your goal.
 
-![Alt text](./IMG_3180.PNG)
+![Alt text](./IMG_3180.png)
 Similarly, a fitness tracker just like my built in iPhone Health app here that tells me if I did more steps than average, my app can tell you if you hit your fitness goals, or productivity goals, or anything else. You're doing more studying than average today.
 
-![Alt text](./IMG_3181.PNG)
+![Alt text](./IMG_3181.png)
 Just like this leaderboard on Fizz, an MIT meme/discussion app, we'll have a leaderboard for reputation that generally rewards wholesome participation in the community, as well as the mentor programs and study groups that I detail below. Also leaderboard for who is closest to meeting their wellness goals.
 
-![Alt text](./IMG_3182.PNG)
+![Alt text](./IMG_3182.png)
 This is Google Maps. To slightly differ from subreddits and affinity communities, we could make a sort of imaginary map of all the hobbies in the world, essentially a graph that shows all the communities in the app, with closer related ones closer together. And then how big your empire is depending on how many communities you're in.
 
-![Alt text](./IMG_3183.PNG)
+![Alt text](./IMG_3183.png)
 This is my list of subreddits on Reddit that I'm a part of, to iterate on this, we'll have a few pinned communities such as your school and your class groups and other things I'll detail below.
 
-![Alt text](./IMG_3184.PNG)
+![Alt text](./IMG_3184.png)
 Here Spotify makes me some personalized mood playlists. My twist is collaborative personalized mood playlists, perhaps even one for each community or affinity group.
 
 # Task 3 - Features
