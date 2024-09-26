@@ -260,3 +260,15 @@ sync messagePartner(user: User, other: User, message: Content)
 # Dependency Diagram
 
 ![Dependency diagram](./StudyCalmDependencyDiagram.png)
+
+# Wireframes
+
+found at https://www.figma.com/design/Amp41pPQpg8w4XyROLKvoY/StudyCalm-Wireframes?node-id=0-1&t=qvriHDksdovTXhh3-1
+
+# Design Decisions
+
+1. Post Order - The algorithm that force feeds you content you like is part of what makes mainstream social media addictive. Given that our app focuses on mental health and wellbeing, we prefer two orders - top liked posts of the day, and posts in chronological order. However, if I had to choose between these two orders for sake of time, I would choose the chronological order due to its elegance and simplicity.
+
+2. Location of Features - I knew from the start that I was going to have communities on the left, but where the rest of the features would go I was not quite sure. I had one idea of placing the features -- goals, accountability buddy, events, etc. in the three bar menu in the top left corner, but the location of the menu just above the community list suggested that I should make the menu control the community list, toggle its appearance or lack thereof. Instead, I put the other features on the right side of the screen when the occasion calls for it. I will continue iterating as I do A4 and so on.
+
+3. Events Board Voting Format - My original idea from A2 was to have each community automatically schedule a regular event, so I had that choice, but what is easier is to just do an events board, but offer strong encouragement to have at least one event planned and scheduled on the board at all times. This heading also entails how I did the voting, if each user votes for a combined time/location pair, or each user votes for a time and then a location separately. Ultimately, I am making it granular so that the users have as much control over their preferences as possible, though user testing can definitely change this up.
