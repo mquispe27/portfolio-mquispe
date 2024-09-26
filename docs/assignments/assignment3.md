@@ -47,11 +47,11 @@ Actions:
 - getUser(session: Session, out user : User)
 - end(session: Session)
 
-# Concept 3 - Posting [Content]
+# Concept 3 - Posting [Content, Environment]
 
-Purpose: Users can post items for other users
+Purpose: Users can post items for other users in an environment
 
-Operational Principle: After making a post, that post is available to other users, which can also be later deleted by the user or liked by other users.
+Operational Principle: After making a post in an environment, that post is available to other users, which can also be later deleted by the user or liked by other users.
 
 State:
 
@@ -60,8 +60,8 @@ State:
 
 Actions:
 
-- post(user: User, content: Content, out postID: Integer)
-- delete(user: User, postID: Integer out content: Content)
+- post(user: User, content: Content, env: Environment, out postID: Integer)
+- delete(user: User, postID: Integer, out content: Content)
 - like(user: User, postID: Integer out likes: Integer)
 
 # Concept 4 - Commenting [Content]
@@ -90,7 +90,7 @@ Operational Principle: After setting sleep and fitness goals, and other custom g
 
 State:
 
-- allGoals: set Goals
+- allGoals: set Goal
 - goalType: allGoals -> one GoalType
 - goalProgress: allGoals -> one Trend
 
@@ -101,7 +101,7 @@ Actions:
 - checkProgress(user: User, type: GoalType, out trend: Trend)
 - shareGoals(user: User)
 
-# Concept 6 - Offline Meetup Scheduling [Event, Time, Community, User]
+# Concept 6 - Offline Scheduling [Event, Time, Community, User]
 
 Purpose: Promote offline meetups and activities for mental health and wellbeing, based around in-app communities/channels
 
@@ -131,25 +131,132 @@ Operational Principle: A user wants to be held accountable to follow their goals
 
 State:
 
+- Unmatched Pool: set User
 - Partnerships: set User-User
-- Goals: User-User -> one Goals, one Goals
+- Goals: User-User -> one set Goal, one set Goal
 - Progress: User-User -> one Trend, one Trend
 
 Actions:
 
 - requestPartner(user: User)
 - acceptPartner(user: User, other: User)
-- shareGoals(user: User, other: User, goals: Goals)
+- shareGoals(user: User, other: User, goals: set Goal)
 - message(user: User, other: User, message: Content)
 
-# App Level Actions:
+# Concept 8 - Community Grouping [Community, User, Content]
+
+Purpose: Create community in the app through affinity groups where relevant content can be created by and displayed to users
+
+Operational Principle: A user wants to see content related to an interest of theirs. They can join a community relevant to that interest, or create a new community around the interest. Once joined, the user can see, create content, and react to existing content.
+
+State:
+
+- Communities: set Community
+- Members: Community -> one set User
+- Content: Community -> one set Content
+
+Actions:
+
+- createCommunity(user: User, name: String, out comm: Community)
+- joinCommunity(user: User, comm: Community)
+- leaveCommunity(user: User, comm: Community)
+- addContent(user: User, comm: Community, contentID: String)
+
+# App Level Actions [Community, User, Content]:
 
 sync register (username, password: String, out user: User)
- - Authenticating.register(username, password, user)
+
+- Authenticating.register(username, password, user)
 
 sync login (username, password: String, out user: User)
- - Authenticating.authentiate(username, password, user)
- - Sessioning.start(user, session)
 
-sync logout (session: Session) 
- - Sessioning.end(session)
+- Authenticating.authentiate(username, password, user)
+- Sessioning.start(user, session)
+
+sync logout (session: Session)
+
+- Sessioning.end(session)
+
+sync post(user: User, post: Content, comm: Community)
+
+- Community Grouping.joinCommunity(user, comm) (only if not yet joined)
+- Posting.post(user, post, comm), out postID
+- Community Grouping.addContent(user, comm, postID)
+
+sync likePost(user: User, postID: Integer)
+
+- Posting.like(user, postID)
+
+sync commentOnPost(user: User, comment: Content, postID: Integer)
+
+- Commenting.publish(user, content, postID)
+
+sync commentReplyToComment(user: User, comment: Content, commentID: Integer)
+
+- Commenting.publish(user, content, commentID)
+
+sync likeComment(user: User, commentID: Integer)
+
+- Commenting.like(user, commentID)
+
+sync deletePost(user: User, postID: Integer)
+
+- Posting.delete(user, postID)
+
+sync deleteComment(user: User, commentID: Integer)
+
+- Commenting.delete(user, commentID)
+
+sync createEventInExistingCommunity(user: User, comm: Community, time: Time, location: String)
+
+- Community Grouping.joinCommunity(user, comm) (if not yet joined)
+- Offline Scheduling.createEvent(comm, time, location)
+- Offline Scheduling.notifyUsers(comm, comm.Members)
+
+sync createEventInNewCommunity(user: User, communityName: String, time: Time, location: String)
+
+- Community Grouping.createCommunity(user, communityName) out comm: Community
+- Offline Scheduling.createEvent(comm, time, location)
+- Offline Scheduling.notifyUsers(comm, comm.Members)
+
+sync joinExistingEvent(user: User, comm: Community, eventID: Integer, time: Time, location: String)
+
+- Community Grouping.joinCommunity(user, comm) (if not yet joined)
+- Offline Scheduling.joinEvent(user, eventID)
+- Offline Scheduling.voteOnTime(user, eventID, time)
+- Offline Scheduling.voteOnLocation(user, eventID, location)
+
+sync leaveEvent(user: User, eventID: Integer)
+
+- Offline Scheduling.leaveEvent(user, eventID)
+
+sync findPartner(user: User, goals: set Goal)
+
+- Accountability Partner Matching.requestPartner(user)
+  (wait to be matched... pull from Unmatched Pool) out other : User
+- Accountability Partner Matching.acceptPartner(user, other)
+
+sync setSleepGoal(user: User, goal: Goal)
+
+- Goal Setting.setGoals(user, goal, GoalType.Sleep)
+
+sync setFitnessGoal(user: User, goal: Goal)
+
+- Goal Setting.setGoals(user, goal, GoalType.Fitness)
+
+sync setOtherGoal(user: User, goal: Goal)
+
+- Goal Setting.setGoals(User, goal, GoalType.Misc)
+
+sync shareGoals(user: User, other: User, goals: set Goal, type: GoalType)
+
+- Goal Setting.setGoals(user, goal, type) for each goal: Goal in set Goal
+- Accountability Partner Matching.shareGoals(user, other, goals)
+
+sync messagePartner(user: User, other: User, message: Content)
+
+- Accountability Partner Matching.message(user, other, content)
+
+# Dependency Diagram
+
+![Dependency diagram](./StudyCalmDependencyDiagram.png)
