@@ -15,9 +15,17 @@ https://github.com/mquispe27/study-calm-backend
 
 https://github.com/mquispe27/study-calm-backend/blob/main/server/concepts/commenting.ts
 
-## Link to Community Concept
+## Link to Grouping Concept
+
+https://github.com/mquispe27/study-calm-backend/blob/main/server/concepts/grouping.ts
+
+## Link to Other Concept Route Skeletons
+
+https://github.com/mquispe27/study-calm-backend/blob/main/server/routes.ts
 
 ## Deployed Service on Vercel
+
+https://study-calm-backend.vercel.app/
 
 ## Abstract Data Models -- reused but tweaked from A3
 
@@ -54,6 +62,7 @@ parent: comment --> one Parent
 ### Concept 5 - Grouping [User, Community, Content]
 
 communities --> set Community
+founder: Community --> one User
 members: Community -> one set User
 content: Community -> one set Content
 
