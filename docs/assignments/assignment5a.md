@@ -7,6 +7,12 @@ layout: doc
 
 No collaborators.
 
+## Link to Frontend
+
+Implemented two concepts for the alpha, so that I will have two more concepts to implement for next week.
+
+https://github.com/mquispe27/study-calm-frontend
+
 ## Heuristic Evaluation
 
 I will look at seven different design factors for my heuristic analysis.
