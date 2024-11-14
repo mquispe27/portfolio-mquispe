@@ -185,17 +185,17 @@ Estimating one's carbon footprint can be challenging, especially when it comes t
 ### Features We Chose:
 
 - #2 Carpool/Volunteer Matching for Food Access
-- Relevant Concept: Delivering
+  - Relevant Concept: Delivering
 - #3 Surplus Food Listing for Redistribution
-- Relevant Concept: Posting
+  - Relevant Concept: Posting
 - #5 Filtered and Sortable Listings by Food Type
-- Relevant Concept: Tagging
+  - Relevant Concept: Tagging
 - #19 In-app Messaging for Users/Volunteers
-- Relevant Concept: Messaging
+  - Relevant Concept: Messaging
 - #25 Donated Food Claiming
-- Relevant Concepts: Posting, Claiming
+  - Relevant Concepts: Posting, Claiming
 
-### Concept I
+### Concept I:
 
 **Name**: Posting [User, Item]
 
@@ -203,24 +203,23 @@ Estimating one's carbon footprint can be challenging, especially when it comes t
 
 **Operational Principle:** User `a` can post an Item `item` to their account.
 
-**Name**: Donating [User, Item]
-
-**Purpose:** A user can donate an item to others
-
-**Operational Principle:** User `user` can donate item `item` of a specified quantity `quantity` to a `donatee`
-
-### Concept II
+### Concept II:
 
 **Name**: Claiming [User, Item]
 
 **Purpose:** A User can claim an Item for themself.
 
-Operational Principle: User `user` can claim Item `item` for themself, after which other Users cannot claim it.
-Delivering [User, Item]
-Purpose: A user can deliver a specific Item.
-Operational Principle: User `user` will deliver a specific Item `item`.
+**Operational Principle:** User `user` can claim Item `item` for themself, after which other Users cannot claim it.
 
-### Concept III
+### Concept III:
+
+**Name**: Delivering [User, Item]
+
+**Purpose:** A user can deliver a specific Item.
+
+**Operational Principle:** User `user` will deliver a specific Item `item`.
+
+### Concept IV:
 
 **Name:** Expiring [Item]
 
@@ -228,14 +227,15 @@ Operational Principle: User `user` will deliver a specific Item `item`.
 
 **Operational Principle:** If you create an Item `i` with an expiration time `t`, after the time `t` the Item is no longer available.
 
-### Concept IV
+### Concept V:
 
 **Name:** Messaging [User]
 
 **Purpose:** Allows messaging between respective Users.
+
 **Operational Principle:** User `sender` can deliver a message with content `content` to User `receiver`.
 
-### Concept V
+### Concept VI:
 
 **Name:** Tagging [Item]
 
@@ -244,7 +244,9 @@ Operational Principle: User `user` will deliver a specific Item `item`.
 **Operational Principle:** If you create an Item `i`, tags can be added to aid in further filtering or categorization of the Item.
 
 ```
-include Authenticating, Sessioning[Authenticating.User], Messaging[Sessioning.User], Posting[Sessioning.User, Expiring.Item], Delivering[Claiming.User, Posting.Item], Claiming[Sesssioning.User, Posting.Item]
+include Authenticating, Sessioning[Authenticating.User],
+ Messaging[Sessioning.User], Posting[Sessioning.User, Expiring.Item],
+ Delivering[Claiming.User, Posting.Item], Claiming[Sesssioning.User, Posting.Item]
 ```
 
 ## Storyboarding and Sketching
@@ -253,16 +255,16 @@ include Authenticating, Sessioning[Authenticating.User], Messaging[Sessioning.Us
 
 (Goal: If a food-insecure individual does not have access to food, they can easily view food donation listings on the application and claim a donation that will be delivered to them.)
 
-![Food-Insecure Individual Requesting Food](/assignments/Storyboard1.jpg)
+![Food-Insecure Individual Requesting Food](/assignments/FoodInsecure.png)
 
 ### Storyboard 2: Restaurant Posts Food Listing
 
 (Goal: If a restaurant has excess/leftover food, they can post a food donation listing on the application for the community that can be later claimed and delivered.)
 
-![Restaurant Posts Food Listing](/assignments/Storyboard2.jpg)
+![Restaurant Posts Food Listing](/assignments/FoodWaste.png)
 
 ### Storyboard 3: Volunteers Deliver Food from Restaurants to Food-Insecure Individuals
 
 (Goal: Volunteers who have spare time and want to give back to the community can view food delivery requests, claim them, and deliver food from restaurants to those in need.)
 
-![Volunteer Storyboard](/assignments/Storyboard3.jpg)
+![Volunteer Storyboard](/assignments/FoodVolunteer.png)
